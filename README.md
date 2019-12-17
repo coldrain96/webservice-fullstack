@@ -7,8 +7,9 @@ Webservice on Express.js / Vue.js
 3. Выполнить команду node index
 4. Перейти в папку webservice-fullstack/client
 5. Выполнить команду npm install 
-6. Выполнить команду npm run serve
-7. Перейти по адресу в браузере: http://localhost:8080/
+6. Выполнить команду npm run lint, если вы запускаете приложение на ОС Windows
+7. Выполнить команду npm run serve. 
+8. Перейти по адресу в браузере: http://localhost:8080/
 
 ## Использованные инструменты:
 + Backend: Express.js (Node.js. nodemon)
