@@ -3,9 +3,6 @@
     <v-navigation-drawer app>
     <v-list>
       <v-list-item link>
-        <router-link exact active-class="active" to="/" tag="li">index</router-link>
-      </v-list-item>
-      <v-list-item link>
         <router-link exact active-class="active" to="/user" tag="li">user</router-link>
       </v-list-item>
       <v-list-item link>
@@ -16,26 +13,19 @@
 
     <v-app-bar app>
       <v-icon>mdi-github-box</v-icon>
-      <router-link to="">webservice-fullstack-app</router-link>
+      <a href="https://github.com/coldrain96/webservice-fullstack" target="_blank">webservice-fullstack-app</a>
     </v-app-bar>
 
-    <!-- Sizes your content based upon application components -->
     <v-content>
 
-      <!-- Provides the application the proper gutter -->
       <v-container fluid>
 
-        <!-- If using vue-router -->
         <router-view/>
+
       </v-container>
     </v-content>
   </v-app>
 </template>
 
 <script>
-export default {
-  data: () => ({
-    links: ['/', '/user', '/operator'],
-  }),
-};
 </script>
