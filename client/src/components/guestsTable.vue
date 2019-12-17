@@ -42,7 +42,6 @@ export default {
       const response = await Service.fetchBackendArr();
       const [guestsArr] = response.data;
       this.guestsArr = guestsArr;
-      console.log(response.data);
     },
   },
 };
