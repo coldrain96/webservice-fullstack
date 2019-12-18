@@ -1,10 +1,7 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const nodemon = require('nodemon');
-const path = require('path')
 const app = express();
 const config = require('./config/config');
-const fs = require('fs');
+
 const cors = require('cors');
 
 // симуляция получения данных по запросу к БД
