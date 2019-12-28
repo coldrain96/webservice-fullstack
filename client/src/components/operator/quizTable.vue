@@ -2,17 +2,17 @@
   <v-data-table
     style="margin-top: 15px"
     :headers="headers"
-    :items="quizArr"
+    :items="allQuiz"
     :items-per-page="5"
     class="elevation-1"
   ></v-data-table>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
   data: () => ({
-    quizArr: [],
     headers: [
       {
         text: 'Дата',
@@ -29,14 +29,6 @@ export default {
       { text: 'C', value: 'C' },
     ],
   }),
-  // computed: {
-  //   update() {
-  //     this.quizArr = this.$store.guestsArr;
-  //   },
-  // },
-  // computed() {
-  //   // this.$store.dispatch('getResponseArr');
-  //   this.guestsArr = this.$store.guestsArr;
-  // },
+  computed: mapGetters(['allQuiz']),
 };
 </script>

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-// import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   data: () => ({
@@ -33,13 +33,6 @@ export default {
       { text: 'Опрос 4', value: 'Опрос 4' },
     ],
   }),
-  computed: {
-    allGuests() {
-      return this.$store.getters.allGuests;
-    },
-  },
-  // async mounted() {
-  //   this.$store.dispatch('getResponseArr');
-  // },
+  computed: mapGetters(['allGuests']),
 };
 </script>

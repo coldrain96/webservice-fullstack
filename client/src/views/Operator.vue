@@ -4,6 +4,9 @@
       <v-btn @click="toExport">
         Download users data
       </v-btn>
+    <v-btn @click="updateData">
+      Update data
+    </v-btn>
     <v-btn @click="switchCurrentTable('guestsTable')">
       Guests Table
     </v-btn>
@@ -18,9 +21,9 @@
 
 <script>
 import XLSX from 'xlsx';
-import Service from '@/service/service';
-import guestsTable from '@/components/guestsTable.vue';
-import quizTable from '@/components/quizTable.vue';
+import { mapGetters } from 'vuex';
+import guestsTable from '@/components/operator/guestsTable.vue';
+import quizTable from '@/components/operator/quizTable.vue';
 
 export default {
   components: {
@@ -31,34 +34,27 @@ export default {
     guestsTableActive: true,
     quizTableActive: false,
     currentTable: guestsTable,
-    guestsArr: [],
-    quizArr: [],
   }),
-  created() {
-    this.getResponseArr();
+  mounted() {
+    this.updateData();
   },
+  computed: mapGetters([
+    'currentLocalDate',
+  ]),
   methods: {
     switchCurrentTable(view) {
       this.currentTable = view;
     },
-    async getResponseArr() {
-      const response = await Service.fetchBackendArr();
-      const [guestsArr, quizArr] = response.data;
-      this.guestsArr = guestsArr;
-      this.quizArr = quizArr;
-    },
-    localDate() {
-      const d = new Date();
-      const split = `${d.getFullYear()}-${d.getDate()}-${d.getMonth() + 1}`;
-      return split;
-    },
     toExport() {
-      const guestsWS = XLSX.utils.json_to_sheet(this.guestsArr);
-      const quizWS = XLSX.utils.json_to_sheet(this.quizArr);
+      const guestsWS = XLSX.utils.json_to_sheet(this.$store.guestsArr);
+      const quizWS = XLSX.utils.json_to_sheet(this.$store.quizArr);
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, guestsWS, 'По гостям');
       XLSX.utils.book_append_sheet(wb, quizWS, 'По вопросам');
-      XLSX.writeFile(wb, `Отчет за ${this.localDate()}.xlsx`);
+      XLSX.writeFile(wb, `Отчет за ${this.currentLocalDate}.xlsx`);
+    },
+    updateData() {
+      this.$store.dispatch('getResponseArr');
     },
   },
 };
