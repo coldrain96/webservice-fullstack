@@ -13,7 +13,7 @@ Webservice on Express.js / Vue.js
 
 ## Использованные инструменты:
 + Backend: Express.js (Node.js. nodemon)
-+ Frontend: Vue.js (vue router, vuetify, vuelidate, axios, scss)
++ Frontend: Vue.js (vuex, vue router, vuetify, vuelidate, axios, scss)
 + Special libraries: Sheet.js
 + git
 ## Примечания
@@ -23,3 +23,4 @@ Webservice on Express.js / Vue.js
 сущности пользователей.
 + В качестве готового шаблона используются компоненты от vuetify.
 + Затраченное время на задание около 2-3 ночей(12-16 часов).
+UPD. + 3 часа, рефакторинг, оптимизация через vuex

@@ -2,18 +2,17 @@
   <v-data-table
     style="margin-top: 15px"
     :headers="headers"
-    :items="guestsArr"
+    :items="allGuests"
     :items-per-page="5"
     class="elevation-1"
   ></v-data-table>
 </template>
 
 <script>
-import Service from '@/service/service';
+// import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data: () => ({
-    guestsArr: [],
     headers: [
       {
         text: 'Дата презентации',
@@ -34,15 +33,13 @@ export default {
       { text: 'Опрос 4', value: 'Опрос 4' },
     ],
   }),
-  mounted() {
-    this.getResponseArr();
-  },
-  methods: {
-    async getResponseArr() {
-      const response = await Service.fetchBackendArr();
-      const [guestsArr] = response.data;
-      this.guestsArr = guestsArr;
+  computed: {
+    allGuests() {
+      return this.$store.getters.allGuests;
     },
   },
+  // async mounted() {
+  //   this.$store.dispatch('getResponseArr');
+  // },
 };
 </script>

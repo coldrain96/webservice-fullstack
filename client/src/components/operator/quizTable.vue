@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import Service from '@/service/service';
 
 export default {
   data: () => ({
@@ -30,16 +29,14 @@ export default {
       { text: 'C', value: 'C' },
     ],
   }),
-  mounted() {
-    this.getResponseArr();
-  },
-  methods: {
-    async getResponseArr() {
-      const response = await Service.fetchBackendArr();
-      const [, quizArr] = response.data;
-      this.quizArr = quizArr;
-      console.log(response.data);
-    },
-  },
+  // computed: {
+  //   update() {
+  //     this.quizArr = this.$store.guestsArr;
+  //   },
+  // },
+  // computed() {
+  //   // this.$store.dispatch('getResponseArr');
+  //   this.guestsArr = this.$store.guestsArr;
+  // },
 };
 </script>
